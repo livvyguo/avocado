@@ -10,8 +10,8 @@
     <context:property-placeholder file-encoding="utf8" location="classpath:config.properties"/>
 
     <!-- 扫描注解Bean -->
-    <context:component-scan base-package="org.lvy.avocado">
-    <context:exclude-filter type="annotation"
+    <context:component-scan base-package="org.lvy.avocado.server">
+        <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
