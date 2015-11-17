@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="app.name" value="avocado-server" />
+	<property name="log_home" value="${catalina.base:-${app.name}}/logs/avocado-server" />
+
+	<!--<statusListener class="ch.qos.logback.core.status.NopStatusListener" />-->
+    <!--<appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+            <!--&lt;!&ndash; 按天回滚 daily &ndash;&gt;-->
+            <!--<fileNamePattern>${log_home}/access/access-log-%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <!--&lt;!&ndash; 日志最大的历史 60天 &ndash;&gt;-->
+            <!--<maxHistory>60</maxHistory>-->
+        <!--</rollingPolicy>-->
+        <!--<encoder>-->
+            <!--<pattern>[%d{HH:mm:ss.SSS}]%msg%n</pattern>-->
+        <!--</encoder>-->
+    <!--</appender>-->
+
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss:SSS , GMT+8} [%c:%L]-[%p] %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="R"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log_home}/avocado-server.log</File>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss:SSS , GMT+8} [%c:%L]-[%p] %m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_home}/avocado-server.%d.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="org.apache" level="info" />
+	<!-- <logger name="org.apache.ibatis" level="debug"/> -->
+	<logger name="org.mybatis" level="debug" />
+	<logger name="org.springframework" level="debug" />
+
+    <!--<logger name="access_log" level="info">-->
+        <!--<appender-ref ref="ACCESS"/>-->
+    <!--</logger>-->
+
+	<root level="debug">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="R" />
+	</root>
+</configuration>
