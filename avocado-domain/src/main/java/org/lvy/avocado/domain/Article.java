@@ -3,18 +3,29 @@ package org.lvy.avocado.domain;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by livvy (livvyguo@gmail.com) on 15/11/17.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Article implements Serializable {
 
+    @FormParam("id")
     private Integer id;
+    @FormParam("title")
     private String title;
+    @FormParam("author")
     private Integer author;
+    @FormParam("createTime")
     private Date createTime;
+    @FormParam("content")
     private String content;
 
     public Integer getId() {

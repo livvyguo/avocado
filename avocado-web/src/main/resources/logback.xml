@@ -39,6 +39,7 @@
 	<!-- <logger name="org.apache.ibatis" level="debug"/> -->
 	<logger name="org.mybatis" level="debug" />
 	<logger name="org.springframework" level="debug" />
+	<logger name="com.mchange.v2" level="error" />
 
     <!--<logger name="access_log" level="info">-->
         <!--<appender-ref ref="ACCESS"/>-->

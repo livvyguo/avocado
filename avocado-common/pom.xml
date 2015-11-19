@@ -50,7 +50,6 @@
             </testResource>
         </testResources>
         <directory>${project.basedir}/target</directory>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

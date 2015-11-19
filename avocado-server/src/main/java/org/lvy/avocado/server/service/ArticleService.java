@@ -29,4 +29,8 @@ public class ArticleService {
     public Article getArticle(Integer id) {
         return getArticleMapper().getArticle(id);
     }
+
+    public void saveArticle(Article article) {
+        getArticleMapper().saveArticle(article);
+    }
 }
