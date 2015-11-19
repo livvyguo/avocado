@@ -13,17 +13,17 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class DateParamConverterProvider implements ParamConverterProvider {
 
-    private final String format;
+    private final SimpleDateFormat formatter;
 
     public DateParamConverterProvider(String dateFormat) {
-        this.format = dateFormat;
+        this.formatter = new SimpleDateFormat(dateFormat);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public <T> ParamConverter<T> getConverter(Class<T> rawType, Type genericType, Annotation[] annotations) {
 
-        if (rawType != Date.class) {
+        if (!Date.class.equals(rawType)) {
             return null;
         }
 
@@ -31,7 +31,6 @@ public class DateParamConverterProvider implements ParamConverterProvider {
 
             @Override
             public Date fromString(String value) {
-                SimpleDateFormat formatter = new SimpleDateFormat(format);
                 try {
                     return formatter.parse(value);
                 } catch (Exception ex) {
@@ -41,7 +40,7 @@ public class DateParamConverterProvider implements ParamConverterProvider {
 
             @Override
             public String toString(Date date) {
-                return new SimpleDateFormat(format).format(date);
+                return formatter.format(date);
             }
         };
     }
