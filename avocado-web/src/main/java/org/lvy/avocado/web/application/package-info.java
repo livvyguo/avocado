@@ -5,4 +5,4 @@
  * @author livvy
  *
  */
-package org.lvy.avocado.web.config;
+package org.lvy.avocado.web.application;

@@ -35,7 +35,6 @@ public class ArticleResourceTest {
     public void testAddArticle() {
         // fail("Not yet implemented");
         Form form = new Form();
-        form.param("id", "111");
         form.param("title", "test title");
         form.param("content", "test content");
         form.param("author", "12");

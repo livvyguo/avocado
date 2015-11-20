@@ -36,6 +36,7 @@
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="org.lvy.avocado.server.persistence" />
+		<property name="annotationClass" value="org.lvy.avocado.common.annotation.Mapper"/>
 	</bean>
 
 </beans>

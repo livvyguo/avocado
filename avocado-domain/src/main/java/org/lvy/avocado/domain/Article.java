@@ -17,6 +17,10 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Article implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 7750393585083624786L;
     @FormParam("id")
     private Integer id;
     @FormParam("title")

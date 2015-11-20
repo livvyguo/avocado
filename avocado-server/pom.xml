@@ -37,6 +37,7 @@
     </dependencyManagement> -->
 
     <dependencies>
+
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-http</artifactId>
@@ -113,7 +114,11 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${org.mybatis.mybatis-spring.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.miemiedev</groupId>
+            <artifactId>mybatis-paginator</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
         <!--mysql driver -->
         <dependency>

@@ -20,7 +20,7 @@
         </init-param> -->
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
-            <param-value>org.lvy.avocado.web.config.AvocadoReApplication</param-value>
+            <param-value>org.lvy.avocado.web.application.AvocadoRsApplication</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

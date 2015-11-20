@@ -1,20 +1,18 @@
 package org.lvy.avocado.server.resources;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import com.github.miemiedev.mybatis.paginator.domain.Paginator;
 import org.lvy.avocado.domain.Article;
 import org.lvy.avocado.server.service.ArticleService;
 
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import javax.ws.rs.BeanParam;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 
 /**
@@ -36,13 +34,34 @@ public class ArticleResource {
         return article;
     }
 
+    @GET
+    @Path("/select")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public List<Article> selectArticle(@QueryParam("page") @DefaultValue("1") Integer page,@QueryParam("pageSize") @DefaultValue("10") Integer pageSize) {
+        Article example = new Article();
+        PageBounds pageBounds = new PageBounds();
+        pageBounds.setPage(page);
+        pageBounds.setLimit(pageSize);
+        pageBounds.setContainsTotalCount(true);
+        pageBounds.setAsyncTotalCount(true);
+        PageList<Article> article = (PageList<Article>) getArticleService().getArticles(example,pageBounds);
+        Paginator paginator =
+                article.getPaginator();
+        System.out.println(paginator);
+        return article;
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/add")
     public Response addArticle(@BeanParam Article article) {
-        getArticleService().saveArticle(article);
-        return Response.ok("ok").build();
+        Integer result = getArticleService().saveArticle(article);
+        if (result > 0) {
+            return Response.ok("ok").build();
+        }
+        return Response.ok("error").build();
     }
 
     public ArticleService getArticleService() {

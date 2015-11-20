@@ -14,12 +14,12 @@
 		<property name="user" value="${jdbc.user}" />
 		<property name="password" value="${jdbc.password}" />
 		<property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
-		<property name="minPoolSize" value="${jdbc.minPoolSize}" />
-		<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
-		<property name="acquireIncrement" value="${jdbc.acquireIncrement}" />
-		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
-		<property name="maxStatements" value="${jdbc.maxStatements}" />
-		<property name="preferredTestQuery" value="${jdbc.preferredTestQuery}" />
+		<!--<property name="minPoolSize" value="${jdbc.minPoolSize}" />-->
+		<!--<property name="maxPoolSize" value="${jdbc.maxPoolSize}" />-->
+		<!--<property name="acquireIncrement" value="${jdbc.acquireIncrement}" />-->
+		<!--<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />-->
+		<!--<property name="maxStatements" value="${jdbc.maxStatements}" />-->
+		<!--<property name="preferredTestQuery" value="${jdbc.preferredTestQuery}" />-->
 	</bean>
 
 	<bean id="transactionManager"
@@ -40,6 +40,7 @@
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="org.lvy.avocado.server.persistence" />
+		<property name="annotationClass" value="org.lvy.avocado.common.annotation.Mapper"/>
 	</bean>
 
 </beans>
