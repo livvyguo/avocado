@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="acovado-website:war">
+    <output-path>$PROJECT_DIR$/acovado-website/target</output-path>
+    <root id="archive" name="acovado-website-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="acovado-website:war exploded" />
+    </root>
+  </artifact>
+</component>
